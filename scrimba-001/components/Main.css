@@ -1,0 +1,61 @@
+li{
+  text-align: left;
+}
+
+.title{
+  color: #FFF;
+  font-family: Inter;
+  font-size: 39.06px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -1.953px;
+  margin: 0;
+}
+
+.main{
+  background: #282D35;
+  height: 459px;
+  width: 550px;
+  padding: 57px 27px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+
+
+ul {
+  list-style: none;
+  padding-left: 15px;
+}
+
+ul li {
+  display: flex;
+  color: #FFF;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 80%;
+}
+
+ul li::before {
+  content: "\2022";
+  color: #61DAFB;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 30px;
+  width: 1em;
+}
+
+.bg-logo{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  filter: saturate(0) opacity(0.15);
+  width: 263px;
+  height: 263px;
+  transform: translateY(-50%) translateX(50%);
+}

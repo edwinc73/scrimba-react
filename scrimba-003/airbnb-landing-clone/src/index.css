@@ -1,0 +1,10 @@
+#root{
+  width: 550px;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
+
+body{
+  padding: 0;
+  margin: 0;
+}

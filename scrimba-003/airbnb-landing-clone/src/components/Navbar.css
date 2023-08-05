@@ -1,0 +1,15 @@
+p{
+  color: pink;
+}
+
+nav img{
+  width: 82px;
+  margin: 22px 30px;
+}
+
+nav{
+  width: 550px;
+  background-color: white;
+  margin: 0 auto;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.10);
+}

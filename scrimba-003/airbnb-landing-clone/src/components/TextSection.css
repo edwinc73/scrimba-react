@@ -1,0 +1,27 @@
+.text-section{
+  padding: 0 36px;
+  width: 100%;
+}
+
+h1{
+  color: #000;
+  font-family: Poppins;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 110%; /* 39.6px */
+}
+
+p{
+  color: #222;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 110%; /* 17.6px */
+}
+
+.text-section > p{
+  width: 320px;
+  margin-top: 16px;
+}

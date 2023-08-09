@@ -1,0 +1,88 @@
+.card{
+  width: 176px;
+  position: relative;
+}
+
+.image-card img{
+  width: 176px;
+  height: 235px;
+  border-radius: 9px;
+  object-fit: cover;
+}
+
+.tag{
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  text-align: center;
+  padding: 5px 6px;
+  background-color: white;
+  border-radius: 2px;
+  text-transform: uppercase;
+  color: #222;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 10.24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 110%;
+}
+
+.description{
+  color: #222;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 110%; /* 13.2px */
+}
+
+.price{
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.price h4{
+  color: #222;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 110%; /* 13.2px */
+}
+
+.price p{
+  color: #222;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 110%;
+}
+
+.rating-value{
+  display: flex;
+  color: #222;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 110%; /* 13.2px */
+}
+
+.text-light{
+  color: #918E9B;
+}
+
+.star{
+  height: 14px;
+  width: 14px;
+  object-fit: cover;
+}
+
+.ratings{
+  display: flex;
+  gap: 2px;
+  margin: 8px 0;
+}

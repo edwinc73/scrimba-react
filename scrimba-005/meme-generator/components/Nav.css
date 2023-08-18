@@ -1,0 +1,23 @@
+.nav-container{
+  background: linear-gradient(90deg, #672280 0%, #A626D3 100%);
+}
+
+nav{
+  color: #FFF;
+  font-family: Karla;
+  font-style: normal;
+  line-height: normal;
+  padding: 20px 21px;
+}
+
+.logo-text{
+  font-size: 20.748px;
+  font-weight: 700;
+  letter-spacing: -2.075px;
+  margin-left: 7px;
+}
+
+
+.nav-title{
+  font-weight: 500;
+}

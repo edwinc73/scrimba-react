@@ -30,6 +30,7 @@ export default function Main(){
           const randomNumber = Math.floor((Math.random() * 100))
           const randomImg = data.data.memes[randomNumber]
           setImgUrl(randomImg.url)
+          console.log(randomImg.url)
         }
       )
   }
@@ -44,6 +45,8 @@ export default function Main(){
       <button type="submit" className="w-100">Get a new meme image  🖼</button>
       </form>
       <div className="image-container">
+          <h2 className="top-display">{top}</h2>
+          <h2 className="bottom-display">{bottom}</h2>
         <img src={imgUrl} alt="Meme image" className="meme-image" />
       </div>
     </main>

@@ -55,3 +55,31 @@ button{
   width: 100%;
   padding: 36px;
 }
+
+.image-container{
+  position: relative;
+}
+
+.top-display, .bottom-display{
+  position: absolute;
+  left: 0;
+  right: 0;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: white;
+  -webkit-text-stroke: #0D0D0D;
+  -webkit-text-stroke-width: 2px;
+  font-size: 3rem;
+  width: fit-content;
+  max-width: 400px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.9;
+}
+
+.top-display{
+  top: calc(30% - 36px);
+}
+
+.bottom-display{
+  top: calc(70% - 36px);
+}

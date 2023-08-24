@@ -1,0 +1,25 @@
+.form-container{
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  width: 300px;
+  padding: 15px;
+  gap: 15px;
+}
+
+form{
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  width: 300px;
+  padding: 15px;
+  gap: 15px;
+}
+
+input{
+  padding-left: 10px;
+}
+
+.newsletter{
+  gap: 10px;
+}

@@ -1,39 +1,65 @@
 import React from "react"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import "./Main.css"
 
+
+
 export default function Main(){
-  const url = "https://api.imgflip.com/get_memes"
-  const [imgUrl, setImgUrl] = React.useState("https://i.imgflip.com/1ur9b0.jpg")
-  const [top, setTop] = React.useState("")
-  const [bottom, setBottom] = React.useState("")
+  const [meme, setMeme] = React.useState({
+    top:"",
+    bottom: "",
+    imgUrl: "https://i.imgflip.com/1g8my4.jpg"
+  })
+
+  const [allMemes, setAllMemes] = React.useState([])
+
+  React.useEffect(() => {
+    console.log("ran")
+    fetch("https://api.imgflip.com/get_memes")
+        .then(res => res.json())
+        .then(data => setAllMemes(data.data.memes))
+  }, [])
 
   function createMeme(event) {
     event.preventDefault()
-    fetchData()
+    getRandomImg()
+    notify()
   }
+
+  function getRandomImg() {
+    const randomNum = Math.floor(Math.random() * 100) + 1
+    setMeme(prev => {
+      return {
+        ...prev,
+        imgUrl: allMemes[randomNum].url
+      }
+    })
+  }
+
+  const notify = () => toast(
+    "Loading new image", {
+    position: "top-left",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: false,
+    progress: undefined,
+    theme: "light"
+  });
+
 
   function updateInput(e) {
-    if(e.target.name == "top"){
-      setTop(e.target.value)
-    } else {
-      setBottom(e.target.value)
-    }
-
+    setMeme(prev =>{
+      const {name, value} = e.target
+      return {
+        [name]: value
+      }
+    })
   }
 
-
-  function fetchData(){
-    fetch(url).then(
-      res => res.json()).then(
-        data => {
-          const randomNumber = Math.floor((Math.random() * 100))
-          const randomImg = data.data.memes[randomNumber]
-          setImgUrl(randomImg.url)
-          console.log(randomImg.url)
-        }
-      )
-  }
   return (
     <>
     <main>
@@ -45,10 +71,11 @@ export default function Main(){
       <button type="submit" className="w-100">Get a new meme image  🖼</button>
       </form>
       <div className="image-container">
-          <h2 className="top-display">{top}</h2>
-          <h2 className="bottom-display">{bottom}</h2>
-        <img src={imgUrl} alt="Meme image" className="meme-image" />
+          <h2 className="top-display">{meme.top}</h2>
+          <h2 className="bottom-display">{meme.bottom}</h2>
+        <img src={meme.imgUrl} alt="Meme image" className="meme-image" />
       </div>
+      <ToastContainer />
     </main>
     </>
   )

@@ -1,4 +1,62 @@
+:root{
+  --gray: #2B283A;
+}
+
 .game{
   width: 360px;
   height: 379px;
+  background: #0B2434;
+  padding: 30px 20px 29px 20px;
+}
+
+.game-board{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #F5F5F5;
+  height: 100%;
+}
+
+.die-container{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px
+}
+
+p{
+  color: #4A4E74;
+  text-align: center;
+  font-family: Inter;
+  font-size: 13.107px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.393px;
+}
+
+h1{
+  font-size: 25.6px;
+  font-weight: 700;
+  letter-spacing: -0.768px;
+}
+
+h1,h3{
+  color: var(--gray);
+  text-align: center;
+  font-family: Karla;
+  font-style: normal;
+  line-height: normal;
+}
+
+h3{
+  font-size: 20.589px;
+  font-weight: 700;
+}
+
+.text-container{
+  width: 232px;
+  text-align: center;
 }

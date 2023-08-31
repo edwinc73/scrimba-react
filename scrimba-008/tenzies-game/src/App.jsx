@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-    <div className='game'>
+  <div className='game'>
       <div className="game-board">
         <div className="text-container">
           <h1>Tenzies</h1>
@@ -22,6 +22,7 @@ function App() {
           <Dice
           key={`dice${index}`}
           value={randomNumber()}
+          locked={false}
           />
           )}
         </div>

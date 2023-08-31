@@ -3,42 +3,55 @@ import './App.css'
 import Dice from "./components/Dice"
 
 function App() {
+  const [die, setDie] = useState([])
+
+  useEffect(()=>{
+    const arr = []
+    for (let i = 0; i < 10; i++) {
+      arr.push({value: randomNumber(), locked: false})
+    }
+    console.log(arr)
+    setDie(arr)
+  }, [])
 
   const randomNumber = () => {
     return Math.floor(Math.random() * 10) + 1
   }
 
-  const randomNumbers = () => {
-    return Array(10).fill("").map((x, i) => randomNumber())
+  const handleClick = (e) =>{
+    // console.log("lock")
   }
 
-
-  const handleClick = (e) =>{
-    e.target.innerText = randomNumber()
+  const rollNumbers = () =>{
+    setDie(prev =>
+      prev.map(dice =>{
+        return dice.locked ? dice : {...dice, value: randomNumber()}
+      })
+    )
   }
 
   return (
     <>
-  <div className='game'>
-      <div className="game-board">
-        <div className="text-container">
-          <h1>Tenzies</h1>
-          <p>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
-        </div>
-        <div className="die-container">
-          {randomNumbers().map((value, index) =>
-            <Dice
-            key={`dice${index}`}
-            value={value}
-            handleClick = {handleClick}
-            />
-          )}
-        </div>
-        <div className="button-container">
-          <button className="btn-roll">Roll</button>
+      <div className='game'>
+        <div className="game-board">
+          <div className="text-container">
+            <h1>Tenzies</h1>
+            <p>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
+          </div>
+          <div className="die-container">
+            {die.map((dice, i) =>
+              <Dice
+              key={`dice${i}`}
+              value={dice.value}
+              handleClick={handleClick()}
+              />
+            )}
+          </div>
+          <div className="button-container">
+            <button className="btn-roll" onClick={rollNumbers}>Roll</button>
+          </div>
         </div>
       </div>
-    </div>
     </>
   )
 }

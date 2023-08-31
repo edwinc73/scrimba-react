@@ -8,9 +8,9 @@ export default function Dice(props){
 
   return(
     <>
-      <h3 className={locked ? "active square": "square"} onClick={handleClick}>
-        {value}
-      </h3>
+    <h3 className={locked ? "active square": "square"} onClick={handleClick}>
+      {value}
+    </h3>
     </>
   )
 }

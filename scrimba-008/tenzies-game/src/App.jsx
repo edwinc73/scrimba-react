@@ -8,7 +8,6 @@ function App() {
     return Math.floor(Math.random() * 10) + 1
   }
 
-
   return (
     <>
   <div className='game'>
@@ -22,9 +21,11 @@ function App() {
           <Dice
           key={`dice${index}`}
           value={randomNumber()}
-          locked={false}
           />
           )}
+        </div>
+        <div className="button-container">
+          <button className="btn-roll">Roll</button>
         </div>
       </div>
     </div>

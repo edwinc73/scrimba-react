@@ -23,14 +23,14 @@
 .die-container{
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 18px
+  gap: 22px
 }
 
 p{
   color: #4A4E74;
   text-align: center;
   font-family: Inter;
-  font-size: 13.107px;
+  font-size: 0.9rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -38,9 +38,10 @@ p{
 }
 
 h1{
-  font-size: 25.6px;
+  font-size: 2.2rem;
   font-weight: 700;
   letter-spacing: -0.768px;
+  margin: 0;
 }
 
 h1,h3{
@@ -52,11 +53,25 @@ h1,h3{
 }
 
 h3{
-  font-size: 20.589px;
+  font-size: 1.4rem;
   font-weight: 700;
 }
 
 .text-container{
   width: 232px;
   text-align: center;
+}
+
+.btn-roll{
+  width: 92.16px;
+  height: 35.84px;
+  background: #5035FF;
+  border-radius: 4px;
+  border: none;
+  font-weight: 700;
+  color: white;
+  margin-top: 25px;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 4px 0px rgba(0,0,0,0.15);
+  cursor: pointer;
 }

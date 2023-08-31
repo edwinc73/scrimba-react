@@ -8,9 +8,8 @@ function App() {
   useEffect(()=>{
     const arr = []
     for (let i = 0; i < 10; i++) {
-      arr.push({value: randomNumber(), locked: false})
+      arr.push({value: randomNumber(), locked: false, id: i})
     }
-    console.log(arr)
     setDie(arr)
   }, [])
 
@@ -19,7 +18,12 @@ function App() {
   }
 
   const handleClick = (e) =>{
-    // console.log("lock")
+    const id = e.target.id
+    setDie(prev => {
+      return prev.map(dice =>
+        dice.id == id ?{...dice, locked:!dice.locked} : dice
+      )
+    })
   }
 
   const rollNumbers = () =>{
@@ -39,11 +43,13 @@ function App() {
             <p>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
           </div>
           <div className="die-container">
-            {die.map((dice, i) =>
+            {die.map(dice =>
               <Dice
-              key={`dice${i}`}
-              value={dice.value}
-              handleClick={handleClick()}
+              id= {dice.id}
+              key= {`dice${dice.id}`}
+              value= {dice.value}
+              locked= {dice.locked}
+              handleClick= {handleClick}
               />
             )}
           </div>

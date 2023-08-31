@@ -13,6 +13,10 @@ function App() {
     setDie(arr)
   }, [])
 
+  useEffect(() => {
+    win()
+  }, [die])
+  console.log(die)
   const randomNumber = () => {
     return Math.floor(Math.random() * 10) + 1
   }
@@ -32,6 +36,12 @@ function App() {
         return dice.locked ? dice : {...dice, value: randomNumber()}
       })
     )
+  }
+
+  const win = () => {
+    if(die.every(dice => dice.value === die[0].value)){
+      console.log("You won!")
+    }
   }
 
   return (

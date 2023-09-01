@@ -7,7 +7,8 @@ function App() {
   const [die, setDie] = useState([])
   const [start, setStart] = useState(false)
   const [timer, setTimer] = useState(0)
-  const [win, setWin] = useState(true)
+  const [win, setWin] = useState(false)
+  const [scores, setScores] = useState(localStorage.getItem("scores")||[])
 
   useEffect(() => {
     startTimer()
@@ -75,6 +76,8 @@ function App() {
 
   const winCondition = () => {
     if(die.length > 0 && die.every(dice => dice?.value === die[0].value)){
+      scores.push({time: timer, name: "player 1"})
+      localStorage.setItem("scores", scores)
       setWin(true)
     }
   }
@@ -112,7 +115,7 @@ function App() {
       <div className="leader-board game-board">
         <h1>Leaderboard</h1>
         <LeaderBoard
-
+        scores = {scores}
         />
       </div>
     )

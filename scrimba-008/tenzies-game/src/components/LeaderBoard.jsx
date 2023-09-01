@@ -3,6 +3,8 @@ import React from "react"
 import "../components/LeaderBoard.css"
 
 export default function LeaderBoard(props){
+  const {scores} = props
+  console.log(scores)
   return (
     <>
       <div className="scores">

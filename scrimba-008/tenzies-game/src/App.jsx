@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import Dice from "./components/Dice"
+import LeaderBoard from "./components/LeaderBoard"
 
 function App() {
   const [die, setDie] = useState([])
   const [start, setStart] = useState(false)
   const [timer, setTimer] = useState(0)
-  const [win, setWin] = useState(false)
+  const [win, setWin] = useState(true)
 
   useEffect(() => {
     startTimer()
@@ -34,6 +35,15 @@ function App() {
       }, 1000);
       return interval;
     }
+  }
+
+  function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    const formattedMinutes = String(minutes).padStart(2, '0');
+    const formattedSeconds = String(remainingSeconds).padStart(2, '0');
+
+    return `${formattedMinutes}:${formattedSeconds}`;
   }
 
   // change dice value related js
@@ -71,39 +81,47 @@ function App() {
 
   const intro = <p>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
 
-  function formatTime(seconds) {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    const formattedMinutes = String(minutes).padStart(2, '0');
-    const formattedSeconds = String(remainingSeconds).padStart(2, '0');
+  const gameLayout = () =>{
+    return (
+      <div className="game-board">
+      <div className="text-container">
+        <h1>Tenzies</h1>
+        {start ? <p>{formatTime(timer)}</p>: intro}
 
-    return `${formattedMinutes}:${formattedSeconds}`;
+      </div>
+      <div className="die-container">
+        {die.map(dice =>
+          <Dice
+          id= {dice.id}
+          key= {`dice${dice.id}`}
+          value= {dice.value}
+          locked= {dice.locked}
+          handleClick= {handleClick}
+          />
+        )}
+      </div>
+      <div className="button-container">
+        <button className="btn-roll" onClick={rollNumbers}>Roll</button>
+      </div>
+    </div>
+    )
+  }
+
+  const leaderBoardLayout = () => {
+    return(
+      <div className="leader-board game-board">
+        <h1>Leaderboard</h1>
+        <LeaderBoard
+
+        />
+      </div>
+    )
   }
 
   return (
     <>
       <div className='game'>
-        <div className="game-board">
-          <div className="text-container">
-            <h1>Tenzies</h1>
-            {start ? <p>{formatTime(timer)}</p>: intro}
-
-          </div>
-          <div className="die-container">
-            {die.map(dice =>
-              <Dice
-              id= {dice.id}
-              key= {`dice${dice.id}`}
-              value= {dice.value}
-              locked= {dice.locked}
-              handleClick= {handleClick}
-              />
-            )}
-          </div>
-          <div className="button-container">
-            <button className="btn-roll" onClick={rollNumbers}>Roll</button>
-          </div>
-        </div>
+          {win ? leaderBoardLayout() : gameLayout()}
       </div>
     </>
   )

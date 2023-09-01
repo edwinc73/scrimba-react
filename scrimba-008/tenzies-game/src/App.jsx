@@ -4,6 +4,18 @@ import Dice from "./components/Dice"
 
 function App() {
   const [die, setDie] = useState([])
+  const [start, setStart] = useState(false)
+  const [timer, setTimer] = useState()
+
+  // useEffect(() => {
+  // }, [start])
+
+  const startTimer = () => {
+    const interval = setInterval(() => {
+      setTimer(prevTime => prevTime + 1)
+    }, 1000);
+    return interval;
+  }
 
   useEffect(()=>{
     const arr = []
@@ -16,7 +28,7 @@ function App() {
   useEffect(() => {
     win()
   }, [die])
-  console.log(die)
+
   const randomNumber = () => {
     return Math.floor(Math.random() * 10) + 1
   }
@@ -39,8 +51,8 @@ function App() {
   }
 
   const win = () => {
-    if(die.every(dice => dice.value === die[0].value)){
-      console.log("You won!")
+    if(die.length > 0 && die.every(dice => dice?.value === die[0].value)){
+      console.log("You Win!")
     }
   }
 

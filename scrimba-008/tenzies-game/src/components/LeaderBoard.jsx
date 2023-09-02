@@ -3,26 +3,25 @@ import React from "react"
 import "../components/LeaderBoard.css"
 
 export default function LeaderBoard(props){
-  const {scores} = props
+  const {scores,formatTime} = props
+  scores.sort((x,y) => x.time - y.time )
+  const top5Scores = scores.splice(0,5).map(score => {
+    return (
+      <div className="score">
+        <span><p>{formatTime(score.time)}</p></span>
+        <span><p>{score.name}</p></span>
+      </div>
+    )
+  })
   console.log(scores)
   return (
     <>
       <div className="scores">
-        <p>1:1 : Name</p>
-        <p>1:1 : Name</p>
-        <p>1:1 : Name</p>
-        <p>1:1 : Name</p>
-        <p>1:1 : Name</p>
-        <p>1:1 : Name</p>
-        <p>1:1 : Name</p>
-        <p>1:1 : Name</p>
-        <p>1:1 : Name</p>
-        <p>1:1 : Name</p>
-        <p>1:1 : Name</p>
+        {top5Scores}
         <hr />
         <div className="button-section">
-          <p>Your Scores: 1:2</p>
-          <button class="btn-roll">Play Again</button>
+          <input type="text" placeholder="Your Score"/>
+          <p>{formatTime((scores[0].time))}</p>
         </div>
       </div>
     </>

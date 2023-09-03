@@ -81,10 +81,9 @@ function App() {
   const startGame = () => {setStart(true)}
 
   const winCondition = () => {
-    // if(die.length > 0 && die.every(dice => dice?.value === die[0].value)){
-    if(true){
+    if(die.length > 0 && die.every(dice => dice?.value === die[0].value)){
+    // if(true){
       setScores(prev => {
-        console.log(prev)
         prev.push({id: nanoid(), time: timer, name: "player 1"})
         localStorage.setItem("scores", JSON.stringify(prev))
         return prev

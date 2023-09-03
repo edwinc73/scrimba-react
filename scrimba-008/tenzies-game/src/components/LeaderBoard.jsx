@@ -5,6 +5,7 @@ import "../components/LeaderBoard.css"
 export default function LeaderBoard(props){
   const {scores,formatTime} = props
   scores.sort((x,y) => x.time - y.time )
+  console.log(scores)
   const top5Scores = scores.splice(0,5).map(score => {
     return (
       <div className="score">

@@ -12,7 +12,6 @@ function App() {
   const [win, setWin] = useState(false)
   const [scores, setScores] = useState(JSON.parse(localStorage.getItem("scores"))||[])
 
-  console
   useEffect(() => {
     startTimer()
   }, [start])
@@ -60,13 +59,28 @@ function App() {
   const rollNumbers = () =>{
     !start && startGame()
     setDie(prev =>{
-      console.log(typeof prev)
       return prev.map(dice =>{
         return dice.locked ? dice : {...dice, value: randomNumber()}
       })
     }
     )
   }
+
+  useEffect(() => {
+    function handleSpaceBar(event) {
+      if (event.key === ' ' && !win) {
+        rollNumbers();
+      }
+    }
+
+    window.addEventListener('keydown', handleSpaceBar);
+
+    return () => {
+      window.removeEventListener('keydown', handleSpaceBar);
+    };
+  }, [die]);
+
+
 
   const handleClick = (e) =>{
     const id = e.target.id
@@ -77,7 +91,7 @@ function App() {
     })
   }
 
-  // game  logic
+  // game logic
   const startGame = () => {setStart(true)}
 
   const winCondition = () => {
@@ -139,10 +153,16 @@ function App() {
     )
   }
 
-  const rollButton = <button className="btn-roll" onClick={rollNumbers}>Roll</button>
+  const rollButton = <button
+  className="btn-roll"
+  onClick={rollNumbers}
+  >Roll</button>
 
 
-  const resetButton = <button className="btn-roll" onClick={resetGame}>Play again</button>
+  const resetButton = <button
+  className="btn-roll"
+  onClick={resetGame}
+  >Play again</button>
 
   return (
     <>

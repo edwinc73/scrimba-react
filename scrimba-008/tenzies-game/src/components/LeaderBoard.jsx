@@ -6,7 +6,8 @@ export default function LeaderBoard(props){
   const {scores,formatTime} = props
   scores.sort((x,y) => x.time - y.time )
   console.log(scores)
-  const top5Scores = scores.splice(0,5).map(score => {
+  const top5Scores = scores
+  top5Scores.splice(0,5).map(score => {
     return (
       <div className="score">
         <span><p>{formatTime(score.time)}</p></span>
@@ -14,7 +15,7 @@ export default function LeaderBoard(props){
       </div>
     )
   })
-  console.log(scores)
+
   return (
     <>
       <div className="scores">

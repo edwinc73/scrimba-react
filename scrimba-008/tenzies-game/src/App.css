@@ -1,5 +1,6 @@
 :root{
   --gray: #2B283A;
+  overflow: hidden;
 }
 
 .game{

@@ -10,7 +10,9 @@ function App() {
   const [start, setStart] = useState(false)
   const [timer, setTimer] = useState(0)
   const [win, setWin] = useState(false)
-  const [scores, setScores] = useState(JSON.parse(localStorage.getItem("scores"))||[])
+  const [scores, setScores] = useState(()=>{
+    return localStorage.getItem("scores") ? JSON.parse(localStorage.getItem("scores")) : []
+  })
 
   useEffect(() => {
     startTimer()
@@ -95,8 +97,8 @@ function App() {
   const startGame = () => {setStart(true)}
 
   const winCondition = () => {
-    if(die.length > 0 && die.every(dice => dice?.value === die[0].value)){
-    // if(true){
+    // if(die.length > 0 && die.every(dice => dice?.value === die[0].value)){
+    if(true){
       setScores(prev => {
         prev.push({id: nanoid(), time: timer, name: "player 1"})
         localStorage.setItem("scores", JSON.stringify(prev))

@@ -100,7 +100,7 @@ function App() {
     // if(die.length > 0 && die.every(dice => dice?.value === die[0].value)){
     if(true){
       setScores(prev => {
-        prev.push({id: nanoid(), time: timer, name: "player 1"})
+        prev.push({id: nanoid(), time: timer})
         localStorage.setItem("scores", JSON.stringify(prev))
         return prev
       })

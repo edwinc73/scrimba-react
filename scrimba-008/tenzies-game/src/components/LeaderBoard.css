@@ -20,6 +20,12 @@
   width: 100%;
 }
 
+.button-section p{
+  padding: 0;
+  margin: 0px 5px 00px ;
+  margin-top: 0 !important;
+}
+
 .scores button{
   margin-top: 0;
   margin-left: 10px;

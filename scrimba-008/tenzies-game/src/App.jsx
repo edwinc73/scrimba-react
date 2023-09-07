@@ -97,8 +97,7 @@ function App() {
   const startGame = () => {setStart(true)}
 
   const winCondition = () => {
-    // if(die.length > 0 && die.every(dice => dice?.value === die[0].value)){
-    if(true){
+    if(die.length > 0 && die.every(dice => dice?.value === die[0].value)){
       setScores(prev => {
         prev.push({id: nanoid(), time: timer})
         localStorage.setItem("scores", JSON.stringify(prev))
@@ -114,7 +113,7 @@ function App() {
     setWin(false)
     setDie(prev =>
       prev.map(dice =>{
-        return dice.locked ? dice : {...dice, value: randomNumber()}
+        return dice.locked ? dice : {...dice, value: randomNumber(), locked:false}
       })
     )
   }
@@ -146,7 +145,7 @@ function App() {
   const leaderBoardLayout = () => {
     return(
       <>
-        <h1>Leaderboard</h1>
+        <h1>Top 5</h1>
         <LeaderBoard
         scores = {scores}
         formatTime = {formatTime}
